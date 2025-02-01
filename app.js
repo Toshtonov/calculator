@@ -18,10 +18,11 @@ function backspace() {
 }
 function calculate() {
     let display = document.getElementById("display");
-    try {
-        display.innerText = eval(display.innerText.replace('%', '/100'));
-    } catch {
-        alert ("Calculator buzildi!")
+    let expression = display.innerText.replace('%', '/100');
 
+    if (expression.match(/[^0-9+\-*/.()%]/)) {
+        alert("Calculator buzildi!");
+    } else {
+        display.innerText = eval(expression);
     }
 }
